@@ -1,5 +1,6 @@
-from flask import Flask
-from api.dice import get_dice, add_dice, delete_dice, roll_dice
+from flask import Flask, request
+from api.roll import roll_dice
+from api.dice import get_dice, add_dice, delete_dice
 import os
 import sqlite3
 import time
@@ -41,7 +42,7 @@ def select_all_dice():
 def index():
     return app.send_static_file('index.html')
 
-@app.route('/api/dice', methods=['GET', 'POST'])
+@app.route('/api/dice', methods=['GET', 'POST']) # type: ignore
 def dice():
     if request.method == 'GET':
         return get_dice()

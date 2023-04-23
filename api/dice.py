@@ -43,13 +43,3 @@ def delete_dice(id):
     db.commit()
     db.close()
     return jsonify({'message': 'Dice deleted successfully!'})
-
-# 投掷一个骰子并返回结果
-def roll_dice(id):
-    db = get_db()
-    dice = db.execute('SELECT * FROM Dice WHERE id = ?', [id]).fetchone()
-    db.close()
-    if dice is None:
-        return jsonify({'error': 'Dice not found!'}), 404
-    result = random.randint(1, dice['sides'])
-    return jsonify({'result': result})
