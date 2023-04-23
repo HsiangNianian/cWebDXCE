@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Dice Roller</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        line-height: 1.5;
+        background-color: #eee;
+      }
+      .container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #fff;
+      }
+      h1 {
+        font-size: 32px;
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      label {
+        display: inline-block;
+        margin-bottom: 10px;
+        font-weight: bold;
+      }
+      input[type="text"], input[type="number"] {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        line-height: 1.5;
+        border-radius: 4px;
+        border: 2px solid #ccc;
+        box-sizing: border-box;
+        margin-bottom: 20px;
+      }
+      button {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        font-weight: bold;
+        line-height: 1.5;
+        border-radius: 4px;
+        border: none;
+        background-color: #007bff;
+        color: #fff;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #0069d9;
+      }
+      .result {
+        margin-top: 20px;
+        font-weight: bold;
+        text-align: center;
+        font-size: 24px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Dice Roller</h1>
+      <form id="dice-form">
+        <div>
+          <label for="dice-name">Name:</label>
+          <input type="text" id="dice-name" name="name" placeholder="Enter dice name">
+        </div>
+        <div>
+          <label for="dice-sides">Sides:</label>
+          <input type="number" id="dice-sides" name="sides" min="2" max="1000" value="6">
+        </div>
+        <button type="submit" id="add-button">Add</button>
+      </form>
+      <div id="dice-container"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+      const form = document.getElementById('dice-form');
+      const addButton = document.getElementById('add-button');
+      const diceContainer = document.getElementById('dice-container');
+
+      const renderDiceList = (diceList) => {
+        let html = '';
+        diceList.forEach(dice => {
+          html += `<div>
+            <h3>${dice.name}</h3>
+            <p>Sides: ${dice.sides}</p>
+            <button class="roll-button" data-id="${dice.id}">Roll</button>
+            <button class="delete-button" data-id="${dice.id}">Delete</button>
+          </div>`;
+        });
+        diceContainer.innerHTML = html;
+      };
+
+      const addDice = () => {
+        const name = document.getElementById('dice-name').value;
+        const sides = document.getElementById('dice-sides').value;
+
+        axios.post('/api/dice', {name, sides})
+          .then(response => {
+            loadDiceList();
+            form.reset();
+          })
+          .catch(error => {
+            console.error(error);
+          });
+      };
+
+      const deleteDice = (id) => {
+        axios.delete(`/api/dice/${id}`)
+          .then(response => {
+            loadDiceList();
+          })
+          .catch(error => {
+            console.error(error);
+          });
+      };
+
+      const rollDice = (id) => {
+        axios.get(`/api/roll/${id}`)
+          .then(response => {
+            const result = response.data.result;
+            alert(`Result: ${result}`);
+          })
+          .catch(error => {
+            console.error(error);
+          });
+      };
+
+      const loadDiceList = () => {
+        axios.get('/api/dice')
+          .then(response => {
+            const diceList = response.data;
+            renderDiceList(diceList);
+          })
+          .catch(error => {
+            console.error(error);
+          });
+      };
+
+      form.addEventListener('submit', event => {
+        event.preventDefault();
+        addDice();
+      });
+
+      diceContainer.addEventListener('click', event => {
+        const target = event.target;
+        if (target.classList.contains('delete-button')) {
+          const id = +target.getAttribute('data-id');
+          deleteDice(id);
+        } else if (target.classList.contains('roll-button')) {
+          const id = +target.getAttribute('data-id');
+          rollDice(id);
+        }
+      });
+
+      loadDiceList();
+    </script>
+  </body>
+</html>
