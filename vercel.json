@@ -3,7 +3,7 @@
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "api/$1.py"
+      "dest": "api/dice.py"
     },
     {
       "src": "/(.*)",
