@@ -39,7 +39,7 @@ API 接口
 -----
 
 <a href="https://github.com/HsiangNianian/cWebDXCE/graphs/contributors">
-  <img width="150" src="https://contrib.rocks/image?repo=HsiangNianian/cWebDXCE" />
+  <img src="https://contrib.rocks/image?repo=HsiangNianian/cWebDXCE" />
 </a>
 
 License
