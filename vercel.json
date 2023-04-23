@@ -1,6 +1,7 @@
 {
+  "version": 2,
   "routes": [
-    { "src": "/api/(.*)", "dest": "api/dice.py" },
+    { "src": "/api/(.*)", "dest": "api/$1.py" },
     { "src": "/(.*)", "dest": "static/index" }
   ],
   "builds": [
