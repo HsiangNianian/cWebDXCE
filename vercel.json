@@ -2,8 +2,12 @@
   "version": 2,
   "routes": [
     {
-      "src": "/api/(.*)",
+      "src": "/api/dice/(.*)",
       "dest": "api/dice.py"
+    },
+    {
+      "src": "/api/roll/(.*)",
+      "dest": "api/roll.py"
     },
     {
       "src": "/(.*)",
