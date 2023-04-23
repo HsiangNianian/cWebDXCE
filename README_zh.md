@@ -3,8 +3,8 @@
 </h1>
 
 <p align="center">
-  <a href="/README.md">English</a>
-  <a href="">Demo</a>
+  <a href="/README.md">English</a> |
+  <a href="">Demo</a> |
   <a href="https://vercel.com/new/clone?repository-url=https://github.com/HsiangNianian/cWebDXCE" target="_blank">Deploy</a>
 </p>
 
