@@ -5,6 +5,7 @@
 <p align="center">
   <a href="/README_zh.md">简体中文</a>
   <a href="">Demo</a>
+  <a href="https://vercel.com/new/clone?repository-url=https://github.com/HsiangNianian/cWebDXCE" target="_blank">Deploy</a>
 </p>
 
 This Github repository is a dice application that includes both frontend and backend folders, using technology stacks such as Vue.js, axios, and Flask to achieve CRUD operations. Users can enter the name and number of faces of a dice on the page and add it to the list. Each dice has its unique ID, which can be used when the user clicks the delete or roll button.

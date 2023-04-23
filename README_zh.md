@@ -5,6 +5,7 @@
 <p align="center">
   <a href="/README.md">English</a>
   <a href="">Demo</a>
+  <a href="https://vercel.com/new/clone?repository-url=https://github.com/HsiangNianian/cWebDXCE" target="_blank">Deploy</a>
 </p>
 
 该Github仓库是一个包含前端和后端文件夹的骰子应用程序，使用了 Vue.js、axios 和 Flask 等技术栈来实现 CRUD 操作。用户可以在页面上输入一个骰子的名称和面数并将其添加到列表中。每个骰子都有其独特的 ID，在用户点击删除或掷骰子按钮时可以使用它。
