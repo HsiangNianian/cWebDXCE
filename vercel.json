@@ -19,5 +19,10 @@
       "src": "main.py",
       "use": "@vercel/python"
     }
-  ]
+  ],
+  "env": {
+    "PRODUCTION": "true",
+    "FLASK_ENV": "production",
+    "SQLITE_DATABASE_URI": "sqlite:///database/data.db"
+  }
 }

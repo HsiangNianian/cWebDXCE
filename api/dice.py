@@ -3,7 +3,7 @@ import sqlite3
 import random
 import time
 
-DATABASE = 'database/dice.db'
+DATABASE = '../database/data.db'
 
 # 连接数据库
 def get_db():

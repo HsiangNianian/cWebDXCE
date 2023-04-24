@@ -7,7 +7,7 @@ import time
 
 app = Flask(__name__, static_folder='static')
 
-DATABASE = 'database/dice.db'
+DATABASE = 'database/data.db'
 
 def create_table():
     with sqlite3.connect(DATABASE) as conn:
@@ -56,7 +56,7 @@ def delete(id):
 @app.route('/api/roll/<int:id>', methods=['GET'])
 def roll(id):
     return roll_dice(id)
-
+        
 if __name__ == '__main__':
     create_table()
     insert_dice('D6', 6)
