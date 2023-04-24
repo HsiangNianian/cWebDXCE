@@ -17,7 +17,7 @@ Repository Structure
   - `index.html`: The frontend entry page.
 - backend: The backend folder handling the interface and database operation, implemented using the Flask framework.
   - `app.py`: A Python application implemented with Flask which provides CRUD-operational APIs.
-  - `database`: The database folder contains the `dice.db` database file.
+  - `database`: The database folder with the `dice.db` database file.
 
 Interface
 --------
