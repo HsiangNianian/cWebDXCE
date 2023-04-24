@@ -100,7 +100,7 @@
         const name = document.getElementById('dice-name').value;
         const sides = document.getElementById('dice-sides').value;
 
-        axios.post('/api/dice', {name, sides})
+        axios.post('/dice', {name, sides})
           .then(response => {
             loadDiceList();
             form.reset();
@@ -111,7 +111,7 @@
       };
 
       const deleteDice = (id) => {
-        axios.delete(`/api/dice/${id}`)
+        axios.delete(`/dice/${id}`)
           .then(response => {
             loadDiceList();
           })
@@ -121,7 +121,7 @@
       };
 
       const rollDice = (id) => {
-        axios.get(`/api/roll/${id}`)
+        axios.get(`/roll/${id}`)
           .then(response => {
             const result = response.data.result;
             alert(`Result: ${result}`);
@@ -132,7 +132,7 @@
       };
 
       const loadDiceList = () => {
-        axios.get('/api/dice')
+        axios.get('/dice')
           .then(response => {
             const diceList = response.data;
             renderDiceList(diceList);
