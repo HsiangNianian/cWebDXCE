@@ -2,16 +2,12 @@
   "version": 2,
   "routes": [
     {
-      "src": "/api/dice/([0-9]+)",
-      "dest": "api/dice.py?id=$1"
+      "src": "/static/(.*)",
+      "dest": "/static/$1"
     },
     {
-      "src": "/api/roll/([0-9]+)",
-      "dest": "api/roll.py?id=$1"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "static/index"
+      "src": ".*",
+      "dest": "/app.py"
     }
   ],
   "builds": [
