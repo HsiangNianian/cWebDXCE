@@ -2,12 +2,16 @@
   "version": 2,
   "routes": [
     {
-      "src": "/static/(.*)",
-      "dest": "/static/$1"
+      "src": "/(.*)",
+      "dest": "/static/index"
     },
     {
-      "src": ".*",
-      "dest": "/app.py"
+      "src": "/roll/(.*)",
+      "dest": "/main.py"
+    },
+    {
+      "src": "/dice/(.*)",
+      "dest": "/main.py"
     }
   ],
   "builds": [
