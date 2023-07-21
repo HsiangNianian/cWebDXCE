@@ -52,14 +52,15 @@ def get_dice():
     db = get_db()
     dice = db.execute('SELECT * FROM Dice').fetchall()
     db.close()
-    result = []
-    for d in dice:
-        result.append({
+    result = [
+        {
             'id': d['id'],
             'name': d['name'],
             'sides': d['sides'],
-            'created_at': d['created_at']
-        })
+            'created_at': d['created_at'],
+        }
+        for d in dice
+    ]
     return jsonify(result)
 
 # 新增一个骰子
